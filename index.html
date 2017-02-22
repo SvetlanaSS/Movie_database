@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie database</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="movie_database.js"></script>
+</head>
+<body>
+  <header>
+  <h1 id="header-one">Welcome to the Movie Database!</h1>
+  </header>
+  <main>
+  <section>
+    <h2>Enter a movie:</h2>
+    <input type="text" name="title" id="title" class="add-movie" required placeholder="title">
+    <input type="text" name="year" id="year" class="add-movie" required placeholder="year">
+    <p>Choose genres of the movie:</p>
+    <div>
+      <input type="checkbox" name="genre"> Action
+      <input type="checkbox" name="genre"> Adventure
+      <input type="checkbox" name="genre"> Comedy
+      <input type="checkbox" name="genre"> Crime
+      <input type="checkbox" name="genre"> Drama
+      <input type="checkbox" name="genre"> Fantasy
+      <input type="checkbox" name="genre"> History
+      <input type="checkbox" name="genre"> Horror
+      <input type="checkbox" name="genre"> Mystery
+      <input type="checkbox" name="genre"> Music
+      <input type="checkbox" name="genre"> Romance
+      <input type="checkbox" name="genre"> Thriller
+    </div>
+    <p>Rate the movie:</p>
+    <div>
+      <input type="checkbox" name="rating"> 1
+      <input type="checkbox" name="rating"> 2
+      <input type="checkbox" name="rating"> 3
+      <input type="checkbox" name="rating"> 4
+      <input type="checkbox" name="rating"> 5
+      <input type="checkbox" name="rating"> 6
+      <input type="checkbox" name="rating"> 7
+      <input type="checkbox" name="rating"> 8
+      <input type="checkbox" name="rating"> 9
+      <input type="checkbox" name="rating"> 10
+    </div>
+    <button onclick="takeUserInput()">Add</button>
+  </section>
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>
