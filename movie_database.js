@@ -1,22 +1,35 @@
-// Define constans
+// Define constant
 const GENRES = ["action", "adventure", "comedy", "crime", "drama", "fantasy",
-                  "history", "horror", "mystery", "music", "romance", "thriller"],
-      RATINGS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                  "history", "horror", "mystery", "music", "romance", "thriller"];
+// Define an empty array to store movies
+var movies = [];
 
 
-// A Function that takes user input values from the form
-function takeUserInput() {
-  let title = document.getElementById("title").value,
-      year = document.getElementById("year").value,
-      genres = getGenres(),
-      ratings = getRating();
-  console.log("title:", title);
-  console.log("year:", year);
-  console.log("genres:", genres);
-  console.log("ratings:", ratings);
+// Take user input values from the form
+function takeUserInput(){
+  let title = getTitle(),
+      year = getYear(),
+      genres = getGenres(), //return array of selected genres
+      ratings = getRating(); // return one selected rating
+  Movie(title, year, genres, ratings);
 }
 
-// A Function that collects user selected genres
+
+// Get film title and clean user input afterwards
+function getTitle() {
+  let title = document.getElementById("title").value;
+  document.getElementById("title").value = "";
+  return title;
+}
+
+// Get year and clean user input afterwards
+function getYear(){
+  let year = document.getElementById("year").value;
+  document.getElementById("year").value = "";
+  return year;
+}
+
+// Collect user selected genres and clean user input afterwards
 function getGenres() {
   let selectedGenres = [];
   GENRES.map(function(value) {
@@ -27,7 +40,8 @@ function getGenres() {
   return selectedGenres;
 }
 
-// A Function that collects user selected rating
+
+// Collect user selected rating and clean user input afterwards
 function getRating() {
   let selectedResult,
       ratingsForm = document.getElementById("ratings");
@@ -42,11 +56,24 @@ function getRating() {
 
 
 // A Function for creating new movies objects
-function createMovie(title, year, genres, ratings) {
+function Movie(title, year, genres, ratings) {
   this.title = title;
   this.year = year;
   this.genres = genres;
   this.ratings = ratings;
+}
+
+
+// A Function that creates new movies
+
+
+var film = new Movie(title, year, genres, ratings);
+film.push()
+
+
+// A Function that cleans user input
+function clearInput() {
+
 }
 
 
