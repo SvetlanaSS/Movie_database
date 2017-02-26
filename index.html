@@ -11,6 +11,7 @@
   <h1 id="header-one">Welcome to the Movie Database!</h1>
   </header>
   <main>
+  <!--A list for creating a movie-->
   <section>
     <h2>Enter the movie:</h2>
     <input type="text" name="title" id="title" class="add-movie" required placeholder="title">
@@ -43,11 +44,25 @@
       <input type="radio" name="rating" value="9" class="9"> 9
       <input type="radio" name="rating" value="10" class="10"> 10
     </form>
-    <button onclick="takeUserInput()">Add</button>
+    <button onclick="processUserInput()">Add</button>
+  </section>
+  <!--A list for showing all our movies-->
+  <section>
+    <h2>A list of movies</h2>
+    <div class="main-container">
+      <table>
+        <tr>
+          <th align="center" colspan="4">You can see the following movies</th>
+        </tr>
+        <tr>
+          <th width="200" height="50">Title</th>
+          <th width="50" height="50">Year</th>
+          <th width="100" height="50">Genres</th>
+          <th width="100" height="50">Ratings</th>
+        </tr>
+      </table>
+    </div>
   </section>
   </main>
-  <footer>
-
-  </footer>
 </body>
 </html>
