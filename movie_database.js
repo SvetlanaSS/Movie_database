@@ -11,7 +11,7 @@ function takeUserInput(){
       year = getYear(),
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
-  Movie(title, year, genres, ratings);
+  createNewMovie(title, year, genresResult, rating);
 }
 
 
@@ -35,6 +35,7 @@ function getGenres() {
   GENRES.map(function(value) {
     if (document.querySelector(`.${value}:checked`)) {
       selectedGenres.push(value);
+      document.querySelector(`.${value}`).checked = false;
     }
   });
   return selectedGenres;
@@ -55,7 +56,7 @@ function getRating() {
 }
 
 
-// A Function for creating new movies objects
+// Create the Constructor Pattern
 function Movie(title, year, genres, ratings) {
   this.title = title;
   this.year = year;
@@ -64,17 +65,20 @@ function Movie(title, year, genres, ratings) {
 }
 
 
-// A Function that creates new movies
-
-
-var film = new Movie(title, year, genres, ratings);
-film.push()
-
-
-// A Function that cleans user input
-function clearInput() {
-
+// Create a new movie object and push it to the array
+function createNewMovie(title, year, genresResult, rating) {
+  let film;
+  film = new Movie(title, year, genresResult, rating);
+  movies.push(film);
 }
+
+
+// Get a list of our movies
+function listMovies() {
+  console.log(movies);
+}
+
+
 
 
 
