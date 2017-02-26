@@ -5,15 +5,16 @@ const GENRES = ["action", "adventure", "comedy", "crime", "drama", "fantasy",
 var movies = [];
 
 
-// Take user input values from the form
-function takeUserInput(){
+
+// Take user input values from the form, create a new movie and show a list of our movies
+function processUserInput(){
   let title = getTitle(),
       year = getYear(),
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
   createNewMovie(title, year, genres, ratings);
+  showListOfMovies();
 }
-
 
 // Get film title and clean user input afterwards
 function getTitle() {
@@ -41,7 +42,6 @@ function getGenres() {
   return selectedGenres;
 }
 
-
 // Collect user selected rating and clean user input afterwards
 function getRating() {
   let selectedResult,
@@ -56,7 +56,6 @@ function getRating() {
   return selectedResult;
 }
 
-
 // Create the Constructor Pattern
 function Movie(title, year, genres, ratings) {
   this.title = title;
@@ -65,20 +64,18 @@ function Movie(title, year, genres, ratings) {
   this.ratings = ratings;
 }
 
-
 // Create a new movie object and push it to the array
 function createNewMovie(title, year, genresResult, rating) {
   let film;
   film = new Movie(title, year, genresResult, rating);
   movies.push(film);
+  showListOfMovies();
 }
 
+// Show a list of our movies
+function showListOfMovies(element) {
 
-// Get a list of our movies
-function listMovies() {
-  console.log(movies);
 }
-
 
 
 
