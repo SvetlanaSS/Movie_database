@@ -11,7 +11,7 @@ function takeUserInput(){
       year = getYear(),
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
-  createNewMovie(title, year, genresResult, rating);
+  createNewMovie(title, year, genres, ratings);
 }
 
 
@@ -49,6 +49,7 @@ function getRating() {
   for (let i = 0; i < ratingsForm.length; i++) {
     if (ratingsForm[i].checked) {
       selectedResult = ratingsForm[i].value;
+      ratingsForm[i].checked = false;
       return selectedResult;
     }
   }
