@@ -1,11 +1,13 @@
 // Take user input values from the form, create a new movie and show a list of our movies
 function processUserInput(){
+  // Take user input
   let title = getTitle(),
       year = getYear(),
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
-  createNewMovie(title, year, genres, ratings);
-  showListOfMovies(title, year, genres, ratings);
+  // Create an object from user input 
+  let film = createNewMovie(title, year, genres, ratings);
+  showListOfMovies(film);
 }
 
 // Get film title and clean user input afterwards
@@ -62,18 +64,16 @@ function Movie(title, year, genres, ratings) {
 
 // Now we can create the objects and push them to the movies
 function createNewMovie(title, year, genres, ratings) {
-  // Define an empty array to store movies
-  // let movies = [];
   film = new Movie(title, year, genres, ratings);
-  // movies.push(film);
+  return film;
 }
 
 // Show the list of all movies
-function showListOfMovies (film) {
+function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr");
-  line.innerHTML = "<td>" + this.title + "</td><td>" + this.year + "</td><td>" + this.genres + "</td><td>" + 
-  this.ratings + "</td>";
+  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" + 
+  film.ratings + "</td>";
   showAllMovies.appendChild(line);
 }
 
