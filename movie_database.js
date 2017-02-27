@@ -1,11 +1,3 @@
-// Define constant
-const GENRES = ["action", "adventure", "comedy", "crime", "drama", "fantasy",
-                  "history", "horror", "mystery", "music", "romance", "thriller"];
-// Define an empty array to store movies
-var movies = [];
-
-
-
 // Take user input values from the form, create a new movie and show a list of our movies
 function processUserInput(){
   let title = getTitle(),
@@ -13,7 +5,7 @@ function processUserInput(){
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
   createNewMovie(title, year, genres, ratings);
-  showListOfMovies();
+  showListOfMovies(title, year, genres, ratings);
 }
 
 // Get film title and clean user input afterwards
@@ -32,8 +24,10 @@ function getYear(){
 
 // Collect user selected genres and clean user input afterwards
 function getGenres() {
-  let selectedGenres = [];
-  GENRES.map(function(value) {
+  let genres = ["action", "adventure", "comedy", "crime", "drama", "fantasy",
+                  "history", "horror", "mystery", "music", "romance", "thriller"],
+      selectedGenres = [];
+  genres.map(function(value) {
     if (document.querySelector(`.${value}:checked`)) {
       selectedGenres.push(value);
       document.querySelector(`.${value}`).checked = false;
@@ -68,12 +62,14 @@ function Movie(title, year, genres, ratings) {
 
 // Now we can create the objects and push them to the movies
 function createNewMovie(title, year, genres, ratings) {
-  let film = new Movie(title, year, genres, ratings);
+  // Define an empty array to store movies
+  // let movies = [];
+  film = new Movie(title, year, genres, ratings);
   // movies.push(film);
 }
 
 // Show the list of all movies
-function showListOfMovies (title, year, genres, ratings) {
+function showListOfMovies (film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr");
   line.innerHTML = "<td>" + this.title + "</td><td>" + this.year + "</td><td>" + this.genres + "</td><td>" + 
