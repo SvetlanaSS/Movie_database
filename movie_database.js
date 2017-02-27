@@ -74,8 +74,11 @@ function showListOfMovies(film) {
       line = document.createElement("tr"),
       ratingForm = document.getElementById("new-ratings");
   line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" +
-  film.ratings + "</td><td>" + ratingForm.innerHTML + "</td>";
+  film.ratings + "</td><td>" + ratingForm.innerHTML + "<button onclick='rateMovie(movie, rating)'>Add</button></td>";
   showAllMovies.appendChild(line);
 }
 
+function rateMovie(movie, rating){
+  
+}
 
