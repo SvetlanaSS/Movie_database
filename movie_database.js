@@ -56,6 +56,8 @@ function getRating() {
   return selectedResult;
 }
 
+
+
 // Create the Constructor Pattern
 function Movie(title, year, genres, ratings) {
   this.title = title;
@@ -64,18 +66,22 @@ function Movie(title, year, genres, ratings) {
   this.ratings = ratings;
 }
 
-// Create a new movie object and push it to the array
-function createNewMovie(title, year, genresResult, rating) {
-  let film;
-  film = new Movie(title, year, genresResult, rating);
-  movies.push(film);
-  showListOfMovies();
+// Now we can create the objects and push them to the movies
+function createNewMovie(title, year, genres, ratings) {
+  let film = new Movie(title, year, genres, ratings);
+  // movies.push(film);
 }
 
-// Show a list of our movies
-function showListOfMovies(element) {
-
+// Show the list of all movies
+function showListOfMovies (title, year, genres, ratings) {
+  let showAllMovies = document.getElementById("show-all-movies"),
+      line = document.createElement("tr");
+  line.innerHTML = "<td>" + this.title + "</td><td>" + this.year + "</td><td>" + this.genres + "</td><td>" + 
+  this.ratings + "</td>";
+  showAllMovies.appendChild(line);
 }
+
+
 
 
 
