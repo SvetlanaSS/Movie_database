@@ -17,10 +17,14 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  width: 95%;
 }
 
 td, th {
   border: 1px solid #dddddd;
   padding: 8px;
+}
+
+#new-ratings {
+  display: none;
 }

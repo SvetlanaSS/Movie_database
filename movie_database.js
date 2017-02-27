@@ -1,11 +1,11 @@
 // Take user input values from the form, create a new movie and show a list of our movies
-function processUserInput(){
+function processUserInput() {
   // Take user input
   let title = getTitle(),
       year = getYear(),
       genres = getGenres(), //return array of selected genres
       ratings = getRating(); // return one selected rating
-  // Create an object from user input 
+  // Create an object from user input
   let film = createNewMovie(title, year, genres, ratings);
   showListOfMovies(film);
 }
@@ -27,7 +27,7 @@ function getYear(){
 // Collect user selected genres and clean user input afterwards
 function getGenres() {
   let genres = ["action", "adventure", "comedy", "crime", "drama", "fantasy",
-                  "history", "horror", "mystery", "music", "romance", "thriller"],
+                "history", "horror", "mystery", "music", "romance", "thriller"],
       selectedGenres = [];
   genres.map(function(value) {
     if (document.querySelector(`.${value}:checked`)) {
@@ -71,16 +71,11 @@ function createNewMovie(title, year, genres, ratings) {
 // Show the list of all movies
 function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
-      line = document.createElement("tr");
-  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" + 
-  film.ratings + "</td>";
+      line = document.createElement("tr"),
+      ratingForm = document.getElementById("new-ratings");
+  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" +
+  film.ratings + "</td><td>" + ratingForm.innerHTML + "</td>";
   showAllMovies.appendChild(line);
 }
-
-
-
-
-
-
 
 
