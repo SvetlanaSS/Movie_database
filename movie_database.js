@@ -1,10 +1,10 @@
+// This file includes HTML and have functions to add and show movie.
 // Take user input values from the form, create a new movie and show a list of our movies
 function processUserInput() {
   // Take user input
   let title = getTitle(),
       year = getYear(),
-      genres = getGenres(), //return array of selected genres
-      ratings = getRating(); // return one selected rating
+      genres = getGenres(); //return array of selected genres
   // Create an object from user input
   let film = createNewMovie(title, year, genres, ratings);
   showListOfMovies(film);
@@ -38,22 +38,6 @@ function getGenres() {
   return selectedGenres;
 }
 
-// Collect user selected rating and clean user input afterwards
-function getRating() {
-  let selectedResult,
-      ratingsForm = document.getElementById("ratings");
-  for (let i = 0; i < ratingsForm.length; i++) {
-    if (ratingsForm[i].checked) {
-      selectedResult = ratingsForm[i].value;
-      ratingsForm[i].checked = false;
-      return selectedResult;
-    }
-  }
-  return selectedResult;
-}
-
-
-
 // Create the Constructor Pattern
 function Movie(title, year, genres, ratings) {
   this.title = title;
@@ -65,6 +49,7 @@ function Movie(title, year, genres, ratings) {
 // Now we can create the objects and push them to the movies
 function createNewMovie(title, year, genres, ratings) {
   film = new Movie(title, year, genres, ratings);
+  console.log(film);
   return film;
 }
 
@@ -72,13 +57,30 @@ function createNewMovie(title, year, genres, ratings) {
 function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr"),
-      ratingForm = document.getElementById("new-ratings");
-  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" +
-  film.ratings + "</td><td>" + ratingForm.innerHTML + "<button onclick='rateMovie(movie, rating)'>Add</button></td>";
+      ratingForm = document.getElementById("ratings");
+  line.innerHTML =
+    `<td>${film.title}</td>
+     <td>${film.year}</td>
+     <td>${film.genres}</td>
+     <td></td>
+     <td>
+      <form>
+       ${ratingForm.innerHTML}
+       <button type="button" onclick="getRating(this.form)" value="Add">Add</button>
+       </form>
+     </td>`
   showAllMovies.appendChild(line);
 }
 
-function rateMovie(movie, rating){
-  
+// Collect user selected rating and clean user input afterwards
+function getRating(form) {
+  let selectedRating = [];
+  for (let i = 0; i < form.length; i++) {
+    if (form[i].checked) {
+      selectedRating.push(form[i].value);
+      form[i].checked = false;
+      return selectedRating;
+    }
+  }
+  return selectedRating;
 }
-
