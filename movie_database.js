@@ -3,7 +3,7 @@ function processUserInput() {
   // Take user input
   let title = getTitle(),
       year = getYear(),
-      genres = getGenres(), //return array of selected genres
+      genres = getGenres(); //return array of selected genres
       ratings = getRating(); // return one selected rating
   // Create an object from user input
   let film = createNewMovie(title, year, genres, ratings);
@@ -39,19 +39,19 @@ function getGenres() {
 }
 
 // Collect user selected rating and clean user input afterwards
-function getRating() {
-  let selectedResult,
+/*function getRating() {
+  let selectedRating = [],
       ratingsForm = document.getElementById("ratings");
   for (let i = 0; i < ratingsForm.length; i++) {
     if (ratingsForm[i].checked) {
-      selectedResult = ratingsForm[i].value;
+      selectedRating = ratingsForm[i].value;
       ratingsForm[i].checked = false;
-      return selectedResult;
+      return selectedRating;
     }
   }
-  return selectedResult;
+  return selectedRating;
 }
-
+*/
 
 
 // Create the Constructor Pattern
@@ -73,12 +73,31 @@ function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr"),
       ratingForm = document.getElementById("new-ratings");
-  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year + "</td><td>" + film.genres + "</td><td>" +
-  film.ratings + "</td><td>" + ratingForm.innerHTML + "<button onclick='rateMovie(movie, rating)'>Add</button></td>";
+  line.innerHTML = "<td><input type='checkbox' class='selected'></td><td>" + film.title + "</td><td>" + film.year +
+  "</td><td>" + film.genres + "</td><td>" +   film.ratings + "</td><td>" + ratingForm.innerHTML +
+  "<button onclick='getRating()'>Add</button></td>";
   showAllMovies.appendChild(line);
 }
 
-function rateMovie(movie, rating){
-  
+// Collect user selected rating and clean user input afterwards
+function getRating() {
+  let selectedRating = [],
+      ratingsForm = document.getElementById("new-ratings");
+  for (let i = 0; i < ratingsForm.length; i++) {
+    if (ratingsForm[i].checked) {
+      selectedRating.push(ratingsForm[i].value);
+      ratingsForm[i].checked = false;
+      return selectedRating;
+    }
+  }
+  return selectedRating;
 }
 
+//
+function rateMovie(film, ratings) {
+  let showAllMovies = document.getElementById("show-all-movies");
+  let selectedFilm = document.getElementsByClassName("selected");
+  if(selectedFilm.checked) {
+
+  }
+}

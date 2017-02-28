@@ -31,7 +31,7 @@
       <input type="checkbox" name="romance" value="romance" class="romance"> Romance
       <input type="checkbox" name="thriller" value="thriller" class="thriller"> Thriller
     </form>
-    <p>Rate the movie:</p>
+<!--     <p>Rate the movie:</p>
     <form id="ratings">
       <input type="radio" name="rating" value="1" class="1"> 1
       <input type="radio" name="rating" value="2" class="2"> 2
@@ -43,26 +43,12 @@
       <input type="radio" name="rating" value="8" class="8"> 8
       <input type="radio" name="rating" value="9" class="9"> 9
       <input type="radio" name="rating" value="10" class="10"> 10
-    </form>
+    </form> -->
     <button onclick="processUserInput()">Add</button>
   </section>
   <!--A list for showing all our movies-->
   <section>
     <h2>A list of movies</h2>
-    <div class="main-container">
-      <table id="show-all-movies">
-        <tr>
-          <th align="center" colspan="5">You can see the following movies</th>
-        </tr>
-        <tr>
-          <th width="200" height="50">Title</th>
-          <th width="50" height="50">Year</th>
-          <th width="100" height="50">Genres</th>
-          <th width="50" height="50">Ratings</th>
-          <th width="100" height="50">Rate the movie again</th>
-        </tr>
-      </table>
-    </div>
     <form id="new-ratings">
       <input type="radio" name="rating" value="1" class="1"> 1
       <input type="radio" name="rating" value="2" class="2"> 2
@@ -75,6 +61,22 @@
       <input type="radio" name="rating" value="9" class="9"> 9
       <input type="radio" name="rating" value="10" class="10"> 10
     </form>
+    <button onclick="processUserInput()">Add</button>
+    <div class="main-container">
+      <table id="show-all-movies">
+        <tr>
+          <th align="center" colspan="6">You can see the following movies</th>
+        </tr>
+        <tr>
+          <th width="50" height="50">Checkbox</th>
+          <th width="200" height="50">Title</th>
+          <th width="50" height="50">Year</th>
+          <th width="100" height="50">Genres</th>
+          <th width="50" height="50">Ratings</th>
+          <th width="100" height="50">Rate the movie again</th>
+        </tr>
+      </table>
+    </div>
   </section>
   </main>
 </body>
