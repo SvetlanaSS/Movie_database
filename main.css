@@ -24,3 +24,7 @@ td, th {
   border: 1px solid #dddddd;
   padding: 8px;
 }
+
+#ratings {
+  display: none;
+}

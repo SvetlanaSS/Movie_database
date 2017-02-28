@@ -17,6 +17,7 @@ function getTitle() {
   return title;
 }
 
+
 // Get year and clean user input afterwards
 function getYear(){
   let year = document.getElementById("year").value;
@@ -72,8 +73,8 @@ function createNewMovie(title, year, genres, ratings) {
 function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr"),
-      ratingForm = document.getElementById("new-ratings");
-  line.innerHTML = "<td><input type='checkbox' class='selected'></td><td>" + film.title + "</td><td>" + film.year +
+      ratingForm = document.getElementById("ratings");
+  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year +
   "</td><td>" + film.genres + "</td><td>" +   film.ratings + "</td><td>" + ratingForm.innerHTML +
   "<button onclick='getRating()'>Add</button></td>";
   showAllMovies.appendChild(line);
@@ -82,7 +83,7 @@ function showListOfMovies(film) {
 // Collect user selected rating and clean user input afterwards
 function getRating() {
   let selectedRating = [],
-      ratingsForm = document.getElementById("new-ratings");
+      ratingsForm = document.getElementById("ratings");
   for (let i = 0; i < ratingsForm.length; i++) {
     if (ratingsForm[i].checked) {
       selectedRating.push(ratingsForm[i].value);
@@ -101,3 +102,18 @@ function rateMovie(film, ratings) {
 
   }
 }
+
+//
+// movies = [
+//   {
+//     title: 'Terminator',
+//     year: 1991,
+//     genres: [
+//     'action',
+//     'comedy',
+//     'drama',
+//     'fantasy',
+//     'thriller'],
+//     ratings: []
+//   }
+// ]
