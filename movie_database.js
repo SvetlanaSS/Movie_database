@@ -1,10 +1,10 @@
+// This file includes HTML and have functions to add and show movie.
 // Take user input values from the form, create a new movie and show a list of our movies
 function processUserInput() {
   // Take user input
   let title = getTitle(),
       year = getYear(),
       genres = getGenres(); //return array of selected genres
-      ratings = getRating(); // return one selected rating
   // Create an object from user input
   let film = createNewMovie(title, year, genres, ratings);
   showListOfMovies(film);
@@ -16,7 +16,6 @@ function getTitle() {
   document.getElementById("title").value = "";
   return title;
 }
-
 
 // Get year and clean user input afterwards
 function getYear(){
@@ -39,22 +38,6 @@ function getGenres() {
   return selectedGenres;
 }
 
-// Collect user selected rating and clean user input afterwards
-/*function getRating() {
-  let selectedRating = [],
-      ratingsForm = document.getElementById("ratings");
-  for (let i = 0; i < ratingsForm.length; i++) {
-    if (ratingsForm[i].checked) {
-      selectedRating = ratingsForm[i].value;
-      ratingsForm[i].checked = false;
-      return selectedRating;
-    }
-  }
-  return selectedRating;
-}
-*/
-
-
 // Create the Constructor Pattern
 function Movie(title, year, genres, ratings) {
   this.title = title;
@@ -66,6 +49,7 @@ function Movie(title, year, genres, ratings) {
 // Now we can create the objects and push them to the movies
 function createNewMovie(title, year, genres, ratings) {
   film = new Movie(title, year, genres, ratings);
+  console.log(film);
   return film;
 }
 
@@ -74,46 +58,29 @@ function showListOfMovies(film) {
   let showAllMovies = document.getElementById("show-all-movies"),
       line = document.createElement("tr"),
       ratingForm = document.getElementById("ratings");
-  line.innerHTML = "<td>" + film.title + "</td><td>" + film.year +
-  "</td><td>" + film.genres + "</td><td>" +   film.ratings + "</td><td>" + ratingForm.innerHTML +
-  "<button onclick='getRating()'>Add</button></td>";
+  line.innerHTML =
+    `<td>${film.title}</td>
+     <td>${film.year}</td>
+     <td>${film.genres}</td>
+     <td></td>
+     <td>
+      <form>
+       ${ratingForm.innerHTML}
+       <button type="button" onclick="getRating(this.form)" value="Add">Add</button>
+       </form>
+     </td>`
   showAllMovies.appendChild(line);
 }
 
 // Collect user selected rating and clean user input afterwards
-function getRating() {
-  let selectedRating = [],
-      ratingsForm = document.getElementById("ratings");
-  for (let i = 0; i < ratingsForm.length; i++) {
-    if (ratingsForm[i].checked) {
-      selectedRating.push(ratingsForm[i].value);
-      ratingsForm[i].checked = false;
+function getRating(form) {
+  let selectedRating = [];
+  for (let i = 0; i < form.length; i++) {
+    if (form[i].checked) {
+      selectedRating.push(form[i].value);
+      form[i].checked = false;
       return selectedRating;
     }
   }
   return selectedRating;
 }
-
-//
-function rateMovie(film, ratings) {
-  let showAllMovies = document.getElementById("show-all-movies");
-  let selectedFilm = document.getElementsByClassName("selected");
-  if(selectedFilm.checked) {
-
-  }
-}
-
-//
-// movies = [
-//   {
-//     title: 'Terminator',
-//     year: 1991,
-//     genres: [
-//     'action',
-//     'comedy',
-//     'drama',
-//     'fantasy',
-//     'thriller'],
-//     ratings: []
-//   }
-// ]
