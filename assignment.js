@@ -30,56 +30,68 @@ function Movie(title, year, genres) {
 }
 // film1 = new Movie('movie title', 2011, ['Kids', 'Drama', 'Romance']);
 
-// Rate movie function and return a movie object
-function rateMovie(movie, rating) {
-  movie.ratings = [];
-  movie.rating.push(rating);
-  return movie;
-}
 
-// get average rated movie array
-// function used as a help function in getWorstRatedMovie() and getTopRatedMovie()
-function getAverageRatedMovieArray() {
-  resultsArray = [];
-  // use movies array as an example
-  movies.map((movie) => {
-    let sum = movie.ratings.reduce(function(a, b) { return a + b; });
-    let ratingNumber = sum / movie.ratings.length;
-    resultsArray.push({ movie, ratingNumber })
-    return resultsArray;
-  })
-  return resultsArray;
-  // returns movies in the following format
-  // [{ movie: movieObject, ratingNumber: 4.75 }, { movie: movieObject, ratingNumber: 4.75 }]
-}
+// Utilize Module Pattern. This module is responsible for calculating the ratings of films.
+var ModuleRating = (function () {
+  // Rate movie function and return a movie object
+  var rateMovie = function(){
+    movie.ratings = [];
+    movie.rating.push(rating);
+    return movie;
+  }
 
-// get top rated movie as an object
-function getTopRatedMovie() {
-  let moviesWithRatings = getAverageRatedMovieArray();
-// returns max rating value
-  let maxRes = Math.max.apply(Math, moviesWithRatings.map((object) => {
-    return object.ratingNumber;
-  }));
-// search movie with maximum rating value
-  let result = moviesWithRatings.find((object) => {
-    return object.ratingNumber == maxRes;
-  });
-  return result;
-};
+  // Private function _getAverageRatedMovieArray() is used by
+  // getWorstRatedMovie() and getTopRatedMovie() public functions.
+	var _getAverageRatedMovieArray = function() {
+		resultsArray = [];
+		movies.map((movie) => {
+			let sum = movie.ratings.reduce(function(a, b) { return a + b; });
+			let ratingNumber = sum / movie.ratings.length;
+			resultsArray.push({ movie, ratingNumber })
+			return resultsArray;
+		})
+		return resultsArray;
+		// returns movies in the following format
+		// [{ movie: movieObject, ratingNumber: 4.75 }, { movie: movieObject, ratingNumber: 4.75 }]
+	}
 
-// get worst rated movie as an object
-function getWorstRatedMovie() {
-  let moviesWithRatings = getAverageRatedMovieArray();
-// returns min rating value
-  let minRes = Math.min.apply(Math, moviesWithRatings.map((object) => {
-    return object.ratingNumber;
-  }));
-// search movie with minimun rating value
-  let result = moviesWithRatings.find((object) => {
-    return object.ratingNumber == minRes;
-  });
-  return result;
-};
+	// Get top rated movie as an object
+	var getTopRatedMovie = function() {
+		let moviesWithRatings = _getAverageRatedMovieArray();
+		// Returns max rating value
+		let maxRes = Math.max.apply(Math, moviesWithRatings.map((object) => {
+			return object.ratingNumber;
+		}));
+		// Search movie with maximum rating value
+		let result = moviesWithRatings.find((object) => {
+			return object.ratingNumber == maxRes;
+		});
+		return result;
+	};
+
+	// Get worst rated movie as an object
+	var getWorstRatedMovie = function() {
+	  let moviesWithRatings = _getAverageRatedMovieArray();
+	  // Returns min rating value
+	  let minRes = Math.min.apply(Math, moviesWithRatings.map((object) => {
+	    return object.ratingNumber;
+	  }));
+	  // Search movie with minimun rating value
+	  let result = moviesWithRatings.find((object) => {
+	    return object.ratingNumber == minRes;
+	  });
+	  return result;
+	};
+
+  return {
+    rateMovie: rateMovie,
+    getTopRatedMovie: getTopRatedMovie,
+		getWorstRatedMovie: getWorstRatedMovie
+  };
+
+})();
+
+
 
 // get a list of movies with the selected year
 function getMoviesThisYear(year) {
