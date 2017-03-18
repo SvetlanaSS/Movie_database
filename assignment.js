@@ -31,6 +31,7 @@ function Movie(title, year, genres) {
 // film1 = new Movie('movie title', 2011, ['Kids', 'Drama', 'Romance']);
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Utilize Module Pattern. This module is responsible for calculating the ratings of films.
 var ModuleRating = (function () {
   // Rate movie function and return a movie object
@@ -51,7 +52,7 @@ var ModuleRating = (function () {
 			return resultsArray;
 		})
 		return resultsArray;
-		// returns movies in the following format
+		// Returns movies in the following format
 		// [{ movie: movieObject, ratingNumber: 4.75 }, { movie: movieObject, ratingNumber: 4.75 }]
 	}
 
@@ -92,19 +93,25 @@ var ModuleRating = (function () {
 })();
 
 
-
-// get a list of movies with the selected year
-function getMoviesThisYear(year) {
-  resultsArray = [];
-// use movies array as an example
-  movies.map((movie) => {
-    if (movie.year === year) {
-      resultsArray.push(movie);
-    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Utilize Module Pattern. This module is responsible to get a list of movies with the selected year.
+var ModuleYear = function () {
+  var getMoviesThisYear = function(year) {
+    resultsArray = [];
+    movies.map((movie) => {
+      if (movie.year === year) {
+        resultsArray.push(movie);
+      }
+      return resultsArray;
+    });
     return resultsArray;
-  });
-  return resultsArray;
-};
+  };
+
+  return {
+    getMoviesThisYear: getMoviesThisYear
+  }
+}
+
 
 function getMoviesByGenre(genres) {
   // kommer senare
