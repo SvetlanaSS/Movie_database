@@ -118,13 +118,22 @@ let ModuleYear = (function() {
 // Utilize Module Pattern. This module is responsible for working with genres.
 let ModuleGenres = (function() {
   // Get all films of the same genre as the value of the parameter genres. There is a possibility to filter on multiple genres
-  let getMoviesByGenre = function(genre) {
-    console.log("bla ll");
+  let getMoviesByGenre = function(genresArray) {
+    resultsArray = [];
+
+      // Check if all values of a genresArray included in a movie.genres
+    for (let i = 0; i < movie.genres.length; i++) {
+      for (let j = 0; j < genresArray.length; j++) {
+        if (movie.genres[i] == genresArray[j]) {
+          resultsArray.push(movie);
+        };
+      };
+    };
+    return resultsArray;
   };
 
-
   return {
-    getMoviesByGenre: getMoviesByGenre,
+    getMoviesByGenre: getMoviesByGenre
   };
 
 })();
