@@ -33,9 +33,9 @@ function Movie(title, year, genres) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Utilize Module Pattern. This module is responsible for calculating the ratings of films.
-var ModuleRating = (function () {
+let ModuleRating = (function() {
   // Rate movie function and return a movie object
-  var rateMovie = function(){
+  let rateMovie = function(){
     movie.ratings = [];
     movie.rating.push(rating);
     return movie;
@@ -43,7 +43,7 @@ var ModuleRating = (function () {
 
   // Private function _getAverageRatedMovieArray() is used by
   // getWorstRatedMovie() and getTopRatedMovie() public functions.
-	var _getAverageRatedMovieArray = function() {
+	let _getAverageRatedMovieArray = function() {
 		resultsArray = [];
 		movies.map((movie) => {
 			let sum = movie.ratings.reduce(function(a, b) { return a + b; });
@@ -57,7 +57,7 @@ var ModuleRating = (function () {
 	}
 
 	// Get top rated movie as an object
-	var getTopRatedMovie = function() {
+	let getTopRatedMovie = function() {
 		let moviesWithRatings = _getAverageRatedMovieArray();
 		// Returns max rating value
 		let maxRes = Math.max.apply(Math, moviesWithRatings.map((object) => {
@@ -71,7 +71,7 @@ var ModuleRating = (function () {
 	};
 
 	// Get worst rated movie as an object
-	var getWorstRatedMovie = function() {
+	let getWorstRatedMovie = function() {
 	  let moviesWithRatings = _getAverageRatedMovieArray();
 	  // Returns min rating value
 	  let minRes = Math.min.apply(Math, moviesWithRatings.map((object) => {
@@ -95,8 +95,8 @@ var ModuleRating = (function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Utilize Module Pattern. This module is responsible to get a list of movies with the selected year.
-var ModuleYear = function () {
-  var getMoviesThisYear = function(year) {
+let ModuleYear = (function() {
+  let getMoviesThisYear = function(year) {
     resultsArray = [];
     movies.map((movie) => {
       if (movie.year === year) {
@@ -109,18 +109,22 @@ var ModuleYear = function () {
 
   return {
     getMoviesThisYear: getMoviesThisYear
-  }
-}
+  };
+
+})();
 
 
-function getMoviesByGenre(genres) {
-  // kommer senare
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Utilize Module Pattern. This module is responsible for working with genres.
+let ModuleGenres = (function() {
+  // Get all films of the same genre as the value of the parameter genres. There is a possibility to filter on multiple genres
+  let getMoviesByGenre = function(genre) {
+    console.log("bla ll");
+  };
 
-function removeMovieGenres(genres) {
-  // kommer senare
-}
 
-function addMovieGenres(genres) {
-  // kommer senare
-}
+  return {
+    getMoviesByGenre: getMoviesByGenre,
+  };
+
+})();
