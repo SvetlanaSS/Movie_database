@@ -151,15 +151,17 @@ let ModuleGenres = (function() {
 
 
   // Add genre/genres to the film
-  let addMovieGenres = function(genres) {
+  let addMovieGenres = function(inputGenres) {
     /* For example:
     User selects the movie "The Ring" with the genres ["Horror", "Thriller"] and wants to add
     the following genres ["Mystic", "Sci-Fi"].
-    It meents to add array to array: user input array (with one or several values) to movies array */
+    It meents to add array to array: user input array, inputGenres (with one or several values) to movies array.
+    But this function doesn't check if genre already exist */
     movies.map((movie) => {
-
-    });
-
+      let resultGenres = movie.genres.concat(inputGenres);
+      movie.genres = resultGenres;
+      console.log(movie.genres);
+    })
   };
 
   return {
