@@ -3,21 +3,21 @@
 // Example of movies database
 let movies = [
   {
-      title: 'The Lobster',
+      title: "The Lobster",
       year: 2015,
-      genres: ['Comedy', 'Drama', 'Romance', 'Sci-Fi'],
+      genres: ["Comedy", "Drama", "Romance", "Sci-Fi"],
       ratings: [5, 4, 5, 5]
   },
   {
-      title: 'The Ring',
+      title: "The Ring",
       year: 1854,
-      genres: ['Horror', 'Thriller'],
+      genres: ["Horror", "Thriller"],
       ratings: [10, 10, 10, 10]
   },
   {
-      title: 'The bla bla movie',
+      title: "The bla bla movie",
       year: 2017,
-      genres: ['Comedy', 'Thriller'],
+      genres: ["Comedy", "Thriller"],
       ratings: [1, 1, 1, 0]
   }
 ]
@@ -118,22 +118,40 @@ let ModuleYear = (function() {
 // Utilize Module Pattern. This module is responsible for working with genres.
 let ModuleGenres = (function() {
   // Get all films of the same genre as the value of the parameter genres. There is a possibility to filter on multiple genres
-  let getMoviesByGenre = function(genresArray) {
-    resultsArray = [];
-
-      // Check if all values of a genresArray included in a movie.genres
-    for (let i = 0; i < movie.genres.length; i++) {
-      for (let j = 0; j < genresArray.length; j++) {
-        if (movie.genres[i] == genresArray[j]) {
-          resultsArray.push(movie);
-        };
+  let getMoviesByGenre = function(inputGenres) {
+    // For example:
+    // movies array = ["Comedy", "Drama", "Romance", "Sci-Fi"], ["Horror", "Thriller"], ["Comedy", "Thriller"]
+    // user input, inputGenres = ["Comedy", "Drama"]
+    // check if all values of a inputGenres included in a movies array
+    movies.map((movie) => {
+      let movieGenres = movie.genres;
+      let isarrayOfUserInputSubsetOfMovieGenres = inputGenres.every((val) => {
+        return movieGenres.indexOf(val) >= 0;
+      });
+      if (isarrayOfUserInputSubsetOfMovieGenres) {
+        console.log(movie.title);
       };
-    };
-    return resultsArray;
+    });
+  };
+
+
+  // Remove genre/genres from the film
+  let removeMovieGenres = function(genres) {
+    // For example:
+    // User selects the movie "The Lobster" with the genres ["Comedy", "Drama", "Romance", "Sci-Fi"] and
+    // wants to delete the following genres ["Romance", "Sci-Fi"]
+
+  };
+
+  // Add genre/genres to the film
+  let addMovieGenres = function(genres) {
+
   };
 
   return {
-    getMoviesByGenre: getMoviesByGenre
+    getMoviesByGenre: getMoviesByGenre,
+    removeMovieGenres: removeMovieGenres,
+    addMovieGenres: addMovieGenres
   };
 
 })();
