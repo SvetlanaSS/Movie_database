@@ -1,4 +1,4 @@
-// This file does not contain HTML and other three functions.
+// This file does not contain an interface, only a simple HTML file for easy checking in the Console.
 
 // Example of movies database
 let movies = [
@@ -22,13 +22,14 @@ let movies = [
   }
 ]
 
-// Create a movie with the Constructor Pattern
+// Create a movie with the Constructor Pattern. Create a special "constructor" function that works with objects.
 function Movie(title, year, genres) {
   this.title = title;
   this.year = year;
   this.genres = genres;
 }
-// film1 = new Movie('movie title', 2011, ['Kids', 'Drama', 'Romance']);
+// Create new copies of the movies
+film1 = new Movie("Remember me", 2011, ["Kids", "Drama", "Romance"], [4, 5, 9, 4]);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +53,7 @@ let ModuleRating = (function() {
 		})
 		return resultsArray;
 		/* Returns movies in the following format:
-		[{ movie: movieObject, ratingNumber: 4.75 }, { movie: movieObject, ratingNumber: 4.75 }] */
+		[{ movie: movieObject, ratingNumber: 4.75 }, { movie: movieObject, ratingNumber: 10 }] */
 	}
 
 	// Get top rated movie as an object
