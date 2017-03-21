@@ -31,3 +31,4 @@ This is a simple version of the Constructor Pattern. With it it's easy to add ne
 Module Pattern isolates parts of the application logic from the global context to avoid conflicts and errors. Public variables and functions in a global context can conflict with interfaces of other developers or with libraries.
 Module pattern returns only the public part of the API, leaving everything else accessible only within the closures.
 The module is an independent component that solves one task. Inside the module there can be complex logic, but its purpose is to hide it and provide a simple and understandable API.
+Cons of Module Pattern - you can not refer to the private methods. This can create problems in unit testing - the inability to create automated unit tests for private items.
