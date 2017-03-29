@@ -7,14 +7,14 @@ File "movie_database.js" contains several modules. First module ModuleUserInput 
 
 
 File "movie_database.js" contains the following structure:
-1. **ModuleUserInput** - a module to take user input values from the form, create a new movie and show a list of the movies. Module can be checked using a html-file. The module contains the following functions:
-* **_processUserInput()_** - a function that takes user input values from the form,
-* getTitle() - a function to get film title from the form,
-* getYear() - a function to get year from the form,
-* getGenres() - a function to get selected genres from the form,
-* Movie(title, year, genres, ratings) - a special "constructor" function that works with objects,
-  * createNewMovie(title, year, genres, ratings) - a function to create a new movie,
-  * showListOfMovies(film) - a function to show a list of all movies.
+1. #####ModuleUserInput - a module to take user input values from the form, create a new movie and show a list of the movies. Module can be checked using a html-file. The module contains the following functions:
+  * **_processUserInput()_** - a function that takes user input values from the form,
+  * **_getTitle()_** - a function to get film title from the form,
+  * **_getYear()_** - a function to get year from the form,
+  * **_getGenres()_** - a function to get selected genres from the form,
+  * **_Movie(title, year, genres, ratings)_** - a special "constructor" function that works with objects,
+  * **_createNewMovie(title, year, genres, ratings)_** - a function to create a new movie,
+  * **_showListOfMovies(film)_** - a function to show a list of all movies.
 
 2. **ModuleRating** - a module that is responsible for calculating the ratings of films,
 ⋅⋅* rateMovie() - a function that rates movie and returns a movie object,
