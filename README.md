@@ -7,7 +7,7 @@ File "movie_database.js" contains several modules. First module ModuleUserInput 
 
 
 File "movie_database.js" contains the following structure:
-1. #####ModuleUserInput - a module to take user input values from the form, create a new movie and show a list of the movies. Module can be checked using a html-file. The module contains the following functions:
+1. **ModuleUserInput** - a module to take user input values from the form, create a new movie and show a list of the movies. Module can be checked using a html-file. The module contains the following functions:
   * **_processUserInput()_** - a function that takes user input values from the form,
   * **_getTitle()_** - a function to get film title from the form,
   * **_getYear()_** - a function to get year from the form,
@@ -17,18 +17,18 @@ File "movie_database.js" contains the following structure:
   * **_showListOfMovies(film)_** - a function to show a list of all movies.
 
 2. **ModuleRating** - a module that is responsible for calculating the ratings of films,
-⋅⋅* rateMovie() - a function that rates movie and returns a movie object,
-⋅⋅* _getAverageRatedMovieArray - a private function starts with "_" that is not called by the user and is used to calculate the best and worst ratings of movies,
-⋅⋅* getTopRatedMovie - a function that get top rated movie as an object,
-⋅⋅* getWorstRatedMovie - a function that get worst rated movie as an object,
+  * **_rateMovie()_** - a function that rates movie and returns a movie object,
+  * **_getAverageRatedMovieArray_** - a private function that is not called by the user and is used to calculate the best and worst ratings of movies,
+  * **_getTopRatedMovie_** - a function to get top rated movie as an object,
+  * **_getWorstRatedMovie_** - a function to get worst rated movie as an object,
 
-3) ModuleYear - a module that is responsible to get a list of movies with the selected year,
-⋅⋅* getMoviesThisYear - a function of the same value,
+3. **ModuleYear** - a module that is responsible to get a list of movies with the selected year,
+  * **_getMoviesThisYear_** - a function of the same value,
 
-4) ModuleGenres - a module that is responsible for working with genres,
-⋅⋅* getMoviesByGenre - a function that get all movies of the same genres as the user inputs value,
-⋅⋅* removeMovieGenres - a function that delete genre/genres from the film (delete user inputs value),
-⋅⋅* addMovieGenres - a function that add genre/genres to the film (add user inputs value).
+4. **ModuleGenres** - a module that is responsible for working with genres,
+  * **_getMoviesByGenre_** - a function to get all movies of the same genres as the user inputs value,
+  * **_removeMovieGenres_** - a function to delete genre/genres from the film (delete user inputs value),
+  * **_addMovieGenres_** - a function to add genre/genres to the film (add user inputs value).
 
 Module Pattern isolates parts of the application logic from the global context to avoid conflicts and errors. Public variables and functions in a global context can conflict with interfaces of other developers or with libraries.
 Module pattern returns only the public part of the API, leaving everything else accessible only within the closures.
